@@ -1,0 +1,12 @@
+body{font-family:"Noto Sans Devanagari",
+"Segoe UI",sans-serif;text-align:center;
+padding:20px}
+textarea{width:90%;max-width:600px;
+height:150px}
+label,input{margin:10px}
+#o{margin-top:30px;font-size:1.5em;
+outline-offset:4px;white-space:pre-wrap}
+[onclick="sw()"]{
+position:fixed;
+top:1%;left:25%;
+}
