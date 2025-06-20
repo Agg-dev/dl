@@ -1,7 +1,8 @@
+let blob=0,link=0,use=0,thres=20,val;
 const t=e=>document.getElementById(e),
 prg=t('n'),fs=t('fs'),
 obf=(mem=null)=>{
-const val=Math.abs(t('v').value);
+val=Math.abs(t('v').value);
 if(mem===null)return"";
 if(Array.isArray(mem))return JSON.stringify(obfArr(mem)).replaceAll('\\\\u','\\u');
 if(typeof mem=='object')return JSON.stringify(obfObj(mem)).replaceAll('\\\\u','\\u');
@@ -45,7 +46,6 @@ default:res[key]=obj[prop];
 return res;
 };
 const regex=/loot_tables|scripts|functions|textures|\.png|\.tga|texts|trades/,reg2=/^[\s\S]+\/[^/]+$/,reg3=/"minecraft:block":\s*\{[\s\S]*\}|"particle_effect":\s*\{[\s\S]*\}|"minecraft:feature_rules":\s*\{[\s\S]*\}/,reg4=/[?*:\\|"<>]/g,Path=p=>p.replace(/\/[a-z0-9._@~§]+$/i,'/'+crypto.randomUUID().replace('-','').slice(0,12)+'.json');
-let blob=0,link=0,use=0,thres=20;
 async function s(){
 if(use)return;
 const f=t('f').files;
@@ -70,7 +70,7 @@ prg.textContent=it;
 thres+=20;
 await new Promise(r=>setTimeout(r,0));
 }
-}catch(e){fs.innerHTML+='<hr><strong>'+fi.name+'</strong>'+String(e).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');}
+}catch(e){fs.innerHTML+='<hr><strong>'+fi.name+'</strong>: '+String(e).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');}
 }
 blob=await zip.generateAsync({type:'blob'});
 link=document.createElement('a');
