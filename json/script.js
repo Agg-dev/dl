@@ -45,7 +45,7 @@ default:res[key]=obj[prop];
 }
 return res;
 };
-const regex=/loot_tables|scripts|functions|textures|\.png|\.tga|texts|trades/,reg2=/^[\s\S]+\/[^/]+$/,reg3=/"minecraft:block":\s*\{[\s\S]*\}|"particle_effect":\s*\{[\s\S]*\}|"minecraft:feature_rules":\s*\{[\s\S]*\}/,reg4=/[?*:\\|"<>]/g,Path=p=>p.replace(/\/[a-z0-9._@~§]+$/i,'/'+crypto.randomUUID().replace('-','').slice(0,12)+'.json');
+const regex=/loot_tables|scripts|functions|textures|\.png|\.tga|texts|trades/,reg3=/"minecraft:block":\s*\{[\s\S]*\}|"particle_effect":\s*\{[\s\S]*\}|"minecraft:feature_rules":\s*\{[\s\S]*\}/,reg4=/[?*:\\|"<>]/g,Path=p=>p.replace(/\/[a-z0-9._@~§]+$/i,'/'+crypto.randomUUID().replace('-','').slice(0,12)+'.json');
 async function s(){
 if(use)return;
 const f=t('f').files;
@@ -62,7 +62,7 @@ if(!fi.name.endsWith('.json')){
 zip.file(path,fi);continue;}
 try{
 let txt=await fi.text();
-if(path.split('/').length>2||reg2.test(path)||!regex.test(path))path=Path(path);
+if(path.split('/').length>2&&!regex.test(path))path=Path(path);
 if(!reg3.test(txt))txt=obf(JSON5.parse(txt));
 zip.file(path.replace(reg4,'_'),txt);
 if(it>=thres){
