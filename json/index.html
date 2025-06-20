@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="color-scheme" content="dark only">
+<title>Json folder</title>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/json5@2.2.3/dist/index.min.js"></script>
+<link href="style.css" rel="stylesheet">
+</head>
+<body>
+<h1>Input</h1>
+<input type="file" id="f" webkitdirectory>
+<br><h2 id="n">0</h2>
+<button onclick="s()">Start</button>
+<br><br>
+<button ondblclick="st()">Stop/Done</button>
+<br>
+<h2>Chance to unicode encode</h2>
+<input type="number"id="v"value="0.6"placeholder="Double tap to get info"ondblclick="alert('A round decimal from 0 to 1. Higher values=more security, more size, and worse performance. Lower values=weaker security, smaller size, and better performance. example, for 60% characters encoded, use 0.6')">
+<br>
+<details><summary>Errors
+</summary><fieldset id="fs">
+</fieldset></details>
+<script type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
