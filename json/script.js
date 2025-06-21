@@ -74,7 +74,7 @@ default:res[key]=obj[prop];
 }
 }
 return res;
-},regex=/loot_tables|scripts|\.mcfunction|textures|\.png|\.tga|texts|trades/,
+},regex=/loot_tables|scripts|functions|textures|\.png|\.tga|texts|trades|sounds|spawn_rules/,
 reg3=/"minecraft:block":\s*\{[\s\S]*\}|"particle_effect":\s*\{[\s\S]*\}|"minecraft:feature_rules":\s*\{[\s\S]*\}|"minecraft:geometry":\s*\[[\s\S]*\]|"animations":\s*\{[\s\S]*\}/,
 reg4=/[?*:\\|"<>]+/g,
 Path=p=>uuid?p:p.replace(/\/[^?*:\\|"<>/]+$/i,'/'+crypto.randomUUID().replace('-','').slice(0,12)+'.json');
