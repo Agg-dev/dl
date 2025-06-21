@@ -85,7 +85,7 @@ if(!f.length){
 alert('Select files.');
 return;}
 use=1;
-uuid=t('e').value=='y';
+uuid=t('e').checked;
 const zip=new JSZip();
 for(const fi of f){
 let path=fi.webkitRelativePath;
