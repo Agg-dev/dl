@@ -100,7 +100,7 @@ if(!reg3.test(txt))txt=obf(JSON5.parse(txt));
 zip.file(path.replace(reg4,'_'),txt);
 }catch(e){fs.innerHTML+='<hr><strong>'+path+'</strong>: '+String(e).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');}
 }
-blob=await zip.generateAsync({type:'blob'});
+blob=await zip.generateAsync({type:'blob',mimeType:'application/octet-stream'});
 link=document.createElement('a');
 link.download=t('fn').value;
 link.textContent='Download if not downloaded already';
