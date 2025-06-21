@@ -102,8 +102,7 @@ zip.file(path.replace(reg4,'_'),txt);
 }
 blob=await zip.generateAsync({type:'blob'});
 link=document.createElement('a');
-const spl=f[0].webkitRelativePath.split('/')[0]+'.zip';
-link.download=spl;
+link.download=t('fn').value;
 link.textContent='Download if not downloaded '+spl;
 link.href=URL.createObjectURL(blob);
 document.body.appendChild(link);
