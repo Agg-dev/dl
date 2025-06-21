@@ -103,7 +103,7 @@ zip.file(path.replace(reg4,'_'),txt);
 blob=await zip.generateAsync({type:'blob'});
 link=document.createElement('a');
 link.download=t('fn').value;
-link.textContent='Download if not downloaded '+spl;
+link.textContent='Download if not downloaded already';
 link.href=URL.createObjectURL(blob);
 document.body.appendChild(link);
 link.click();
