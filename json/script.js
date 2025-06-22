@@ -90,3 +90,4 @@ if(blob!==0)URL.revokeObjectURL(blob);
 if(link!==0)document.body.removeChild(link);
 use=0;
 }
+window.onerror=e=>alert(e);
