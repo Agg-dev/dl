@@ -3,8 +3,18 @@ let blob=0,link=0,use=0,uuid,val,_hs='';
 const t=e=>document.getElementById(e),
 prg=t('n'),fs=t('fs'),
 _h=JSON.parse(localStorage.getItem('h'))||[],
-onc=f=>t('fn').value=f.startsWith('AggVerse')?'AggVerse-v2X.mcworld':'.mcpack',
-obf=(mem=null)=>{
+onc=f=>{
+var _FN,SW=x=>f.toLowerCase().startsWith(x),mc='.mcpack;
+if(SW('aggverse'))_FN='AggVerse-v.mcworld';
+else if(SW('torch'))_FN='Torch-v'+mc;
+else if(SW('mobbattle'))_FN='MobBattle-BP-v'+mc;
+else if(SW('grenade'))_FN='GrenadeBP-v'+mc;
+else if(SW('instantre'))_FN='Redstone-BP-v'+mc;
+else if(SW('darkland'))_FN='DarkLand-RP-v'+mc;
+else if(SW('wasteland'))_FN='WasteLand-BP-v'+mc;
+else _FN=f.split('/')[0]+mc;
+t('fn').value=_FN;
+},obf=(mem=null)=>{
 val=Number(t('v').value);
 if(mem===null)return"";
 if(Array.isArray(mem))return JSON.stringify(obfArr(mem)).replaceAll('\\\\u','\\u');
