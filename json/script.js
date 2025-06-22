@@ -1,8 +1,9 @@
 alert(`AggVerse: 121.60+ Dynamic Lighting: 1.16+`);
-let blob=0,link=0,use=0,uuid,val;
+let blob=0,link=0,use=0,uuid,val,_hs='';
 const t=e=>document.getElementById(e),
 prg=t('n'),fs=t('fs'),
-onc=f=>t('fn)').value=f.startsWith('AggVerse')?'AggVerse-v2X.mcworld':'.mcpack',
+_h=JSON.parse(localStorage.getItem('h'))||[],
+onc=f=>t('fn').value=f.startsWith('AggVerse')?'AggVerse-v2X.mcworld':'.mcpack',
 obf=(mem=null)=>{
 val=Number(t('v').value);
 if(mem===null)return"";
@@ -50,6 +51,8 @@ return res;
 reg3=/"minecraft:block":\s*\{[\s\S]*\}|"particle_effect":\s*\{[\s\S]*\}|"minecraft:feature_rules":\s*\{[\s\S]*\}|"minecraft:geometry":\s*\[[\s\S]*\]|"animations":\s*\{[\s\S]*\}/,
 reg4=/[?*:\\|"<>]+/g,
 Path=p=>uuid?p:p.replace(/\/[^?*:\\|"<>/]+$/i,'/'+crypto.randomUUID().replace('-','').slice(0,12)+'.json');
+_h.forEach(x=>_hs+=x+'\n');
+alert('History:\n'+_hs);
 async function s(){
 if(use)return;
 const f=t('f').files;
@@ -58,7 +61,8 @@ alert('Select files.');
 return;}
 use=1;
 uuid=t('e').checked;
-const zip=new JSZip();
+const fn=t('fn').value,zip=new JSZip();
+_h.push(fn);localStorage.setItem(JSON.stringify(_h));
 for(const fi of f){
 let path=fi.webkitRelativePath;
 const sl=path.split('/');
@@ -74,8 +78,8 @@ zip.file(path.replace(reg4,'_'),txt);
 }
 blob=await zip.generateAsync({type:'blob',mimeType:'application/octet-stream',compression:'DEFLATE',compressionOptions:{level:0}});
 link=document.createElement('a');
-link.download=t('fn').value;
-link.textContent='Download if not downloaded already';
+link.download=fn;
+link.textContent='Download if not downloaded '+fn;
 link.href=URL.createObjectURL(blob);
 document.body.appendChild(link);
 link.click();
