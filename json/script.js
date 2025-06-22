@@ -4,7 +4,7 @@ const t=e=>document.getElementById(e),
 prg=t('n'),fs=t('fs'),
 _h=JSON.parse(localStorage.getItem('h'))||[],
 onc=f=>{
-var _FN,SW=x=>f.toLowerCase().startsWith(x),mc='.mcpack;
+var _FN,SW=x=>f.toLowerCase().startsWith(x),mc='.mcpack';
 if(SW('aggverse'))_FN='AggVerse-v.mcworld';
 else if(SW('torch'))_FN='Torch-v'+mc;
 else if(SW('mobbattle'))_FN='MobBattle-BP-v'+mc;
