@@ -31,7 +31,7 @@ AS OF 2025-JUN-21`);
 let blob=0,link=0,use=0,uuid,val;
 const t=e=>document.getElementById(e),
 prg=t('n'),fs=t('fs'),
-onc=()=>t('fn)').value=t('f').files[0].webkitRelativePath.startsWith('AggVerse')?'AggVerse-v2X.mcworld':'.mcpack',
+onc=f=>t('fn)').value=f.startsWith('AggVerse')?'AggVerse-v2X.mcworld':'.mcpack',
 obf=(mem=null)=>{
 val=Number(t('v').value);
 if(mem===null)return"";
