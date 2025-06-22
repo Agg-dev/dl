@@ -1,33 +1,4 @@
-let VI=localStorage.getItem('vi');
-if(!VI){
-VI=1;
-localStorage.setItem('vi',1);
-}else{
-VI=parseInt(VI)+1;
-localStorage.setItem('vi',VI)
-}
-if(VI<6)alert(`1. Agg Verse:
-	Version: 1.21.70+
-	Use: World only
-	Format Name
-	AggVerseV[x].mcworld
-	Example:
-		AggVerseV18.mcworld
-2. Dynamic Lighting:
-	Version: 1.16+
-	Use: RP only
-	Format name:
-	TorchV[x].mcpack
-	Example
-		TorchV16.mcpack
-3. Mob Battles
-	Version: 1.21+
-	Use: RP and BP
-	Format of name:
-	MobFight-[B|R]P-Vx.mcpack
-	Example:
-		MobFight-BP-V14.mcpack
-AS OF 2025-JUN-21`);
+alert(`AggVerse: 121.60+ Dynamic Lighting: 1.16+`);
 let blob=0,link=0,use=0,uuid,val;
 const t=e=>document.getElementById(e),
 prg=t('n'),fs=t('fs'),
