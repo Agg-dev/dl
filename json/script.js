@@ -72,7 +72,7 @@ zip.file(path,fi);continue;}
 try{
 let txt=await fi.text();
 if(sl.length>2&&!regex.test(path))path=Path(path);
-if(!reg3.test(txt))txt=obf(JSON5.parse(txt));
+if(!reg3.test(txt))txt=obf(JSON.parse(txt));
 zip.file(path.replace(reg4,'_'),txt);
 }catch(e){fs.innerHTML+='<hr><strong>'+path+'</strong>: '+String(e).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');}
 }
