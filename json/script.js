@@ -31,6 +31,7 @@ AS OF 2025-JUN-21`);
 let blob=0,link=0,use=0,uuid,val;
 const t=e=>document.getElementById(e),
 prg=t('n'),fs=t('fs'),
+onc=()=>t('fn)').value=t('f').files[0].webkitRelativePath.startsWith('AggVerse')?'AggVerse-v2X.mcworld':'.mcpack',
 obf=(mem=null)=>{
 val=Number(t('v').value);
 if(mem===null)return"";
@@ -100,7 +101,7 @@ if(!reg3.test(txt))txt=obf(JSON5.parse(txt));
 zip.file(path.replace(reg4,'_'),txt);
 }catch(e){fs.innerHTML+='<hr><strong>'+path+'</strong>: '+String(e).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');}
 }
-blob=await zip.generateAsync({type:'blob',mimeType:'application/octet-stream'});
+blob=await zip.generateAsync({type:'blob',mimeType:'application/octet-stream',compression:'DEFLATE',compressionOptions:{level:0}});
 link=document.createElement('a');
 link.download=t('fn').value;
 link.textContent='Download if not downloaded already';
