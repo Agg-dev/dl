@@ -24,9 +24,9 @@ if(Array.isArray(mem))return JSON.stringify(obfArr(mem)).replaceAll('\\\\u','\\u
 if(typeof mem=='object')return JSON.stringify(obfObj(mem)).replaceAll('\\\\u','\\u');
 },getOf=ty=>{
 if(typeof ty=='string')return'str';
-else if(Array.isArray(ty))return'arr';
-else if(typeof ty=='object'&&ty!=null)return'obj';
-else return typeof ty;
+if(Array.isArray(ty))return'arr';
+if(typeof ty=='object'&&ty!=null)return'obj';
+return typeof ty;
 },shf=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a;
 },obfStr=str=>{
 let res='';
