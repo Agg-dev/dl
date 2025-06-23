@@ -16,7 +16,7 @@ else if(SW('instantre')||SW('redstone'))_FN='Redstone-BP-v'+mc;
 else if(SW('darkland'))_FN='DarkLand-RP-v'+mc;
 else if(SW('wasteland'))_FN='WasteLand-BP-v'+mc;
 else _FN=f.split('/')[0]+mc;
-t('fn').value=_FN.replace(/v\d+.mc(pack|world)/,'v'+t('ver').value+'.mc$1');
+t('fn').value=t('e').checked?_FN.replace('v.mcworld','v'+t('ver').value+'.mcworld'):_FN.replace('v'+mc,'v'+t('ver').value+'.mcpack');
 },obf=(mem=null)=>{
 val=Number(t('v').value);
 if(mem===null)return"";
