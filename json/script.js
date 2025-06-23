@@ -15,6 +15,7 @@ else if(SW('grenade'))_FN='GrenadeBP-v'+mc;
 else if(SW('instantre')||SW('redstone'))_FN='Redstone-BP-v'+mc;
 else if(SW('darkland'))_FN='DarkLand-RP-v'+mc;
 else if(SW('wasteland'))_FN='WasteLand-BP-v'+mc;
+else if(SW('glowshot'))_FN='Glow-Shot-v'+mc;
 else _FN=f.split('/')[0]+mc;
 t('fn').value=t('e').checked?_FN.replace('v.mcworld','v'+t('ver').value+'.mcworld'):_FN.replace('v'+mc,'v'+t('ver').value+'.mcpack');
 },obf=(mem=null)=>{
