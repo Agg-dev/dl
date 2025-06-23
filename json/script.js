@@ -75,7 +75,7 @@ return;}
 use=1;
 uuid=t('e').checked;
 const fn=t('fn').value,zip=new JSZip();
-_h.push(fn);localStorage.setItem('h',JSON.stringify(_h));
+_h.unshift(fn);localStorage.setItem('h',JSON.stringify(_h));
 for(IT=0;IT<f.length;IT++){
 const fi=f[IT];
 let path=fi.webkitRelativePath;
