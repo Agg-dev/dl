@@ -1,11 +1,14 @@
-alert(`AggVerse: 121.60+ Dynamic Lighting: 1.16+`);
-let blob=0,link=0,use=0,uuid,val,_hs='';
+let blob=0,link=0,use=0,uuid,val,_hs='',IT=0;
 const t=e=>document.getElementById(e),
 prg=t('n'),fs=t('fs'),
 _h=JSON.parse(localStorage.getItem('h'))||[],
+show=x=>alert(IT),
 onc=f=>{
 var _FN,SW=x=>f.startsWith(x),mc='.mcpack';
-if(SW('aggverse'))_FN='AggVerse-v.mcworld';
+if(SW('aggverse')){
+_FN='AggVerse-v.mcworld';
+t('e').checked=true;
+}
 else if(SW('torch'))_FN='Torch-v'+mc;
 else if(SW('mobbattle'))_FN='MobBattle-BP-v'+mc;
 else if(SW('grenade'))_FN='GrenadeBP-v'+mc;
@@ -13,7 +16,7 @@ else if(SW('instantre')||SW('redstone'))_FN='Redstone-BP-v'+mc;
 else if(SW('darkland'))_FN='DarkLand-RP-v'+mc;
 else if(SW('wasteland'))_FN='WasteLand-BP-v'+mc;
 else _FN=f.split('/')[0]+mc;
-t('fn').value=_FN.replace('v'+mc,'v'+t('ver').value+mc);
+t('fn').value=_FN.replace(/v\d+.mc(pack|world)/,'v'+t('ver').value+'.mc$1');
 },obf=(mem=null)=>{
 val=Number(t('v').value);
 if(mem===null)return"";
@@ -73,7 +76,8 @@ use=1;
 uuid=t('e').checked;
 const fn=t('fn').value,zip=new JSZip();
 _h.push(fn);localStorage.setItem('h',JSON.stringify(_h));
-for(const fi of f){
+for(IT=0;IT<f.length;IT++){
+const fi=f[IT];
 let path=fi.webkitRelativePath;
 const sl=path.split('/');
 path=path.slice(sl[0].length+1);
