@@ -34,7 +34,7 @@ return typeof ty;
 let res='';
 for(let i=0;i<str.length;i++){
 if(str[i]=='\\'){res+=str[i++];res+=str[i];continue;}
-if(Math.random()<val)res+=str[i];
+if((crypto.getRandomValues(new Uint32Array(1))[0]/4294967295)<val)res+=str[i];
 else res+='\\u'+str.charCodeAt(i).toString(16).padStart(4,'0');
 }
 return res;
