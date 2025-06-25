@@ -83,13 +83,13 @@ let path=fi.webkitRelativePath;
 const sl=path.split('/');
 path=path.slice(sl[0].length+1);
 if(!fi.name.endsWith('.json')){
-zip.file(path,fi);continue;}
+zip.file(path,fi,{compression:'DEFLATE',compressionOptions:{level:0}});continue;}
 try{
 let txt=await fi.text();
 if(sl.length>2&&!regex.test(path))path=Path(path);
 if(!reg3.test(txt))txt=obf(JSON.parse(txt));
-zip.file(path.replace(reg4,'_'),txt);
-}catch(e){fs.innerHTML+='<hr><strong>'+path+'</strong>: '+String(e).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');}
+zip.file(path.replace(reg4,'_'),txt,{compression:'DEFLATE',compressionOptions:{level:0}});
+}catch(e){fs.innerHTML+='<hr><strong>'+path+'</strong>: '+String(e).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');zip.file(path,fi,{compression:'DEFLATE',compressionOptions:{level:0}});}
 }
 blob=await zip.generateAsync({type:'blob',mimeType:'application/octet-stream',compression:'DEFLATE',compressionOptions:{level:0}});
 link=document.createElement('a');
