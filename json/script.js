@@ -1,4 +1,4 @@
-let blob=0,link=0,use=0,uuid,val,_hs='',IT=0;
+let blob=0,link=0,use=0,uuid,val,_hs='',IT=0,agg=0;
 const t=e=>document.getElementById(e),
 prg=t('n'),fs=t('fs'),
 _h=JSON.parse(localStorage.getItem('h'))||[],
@@ -7,7 +7,7 @@ onc=f=>{
 var _FN,SW=x=>f.startsWith(x),mc='.mcpack';
 if(SW('aggverse')){
 _FN='AggVerse-v.mcworld';
-t('e').checked=true;
+agg=1;
 }
 else if(SW('torch'))_FN='Torch-v'+mc;
 else if(SW('mobbattle'))_FN='MobBattle-BP-v'+mc;
@@ -17,7 +17,8 @@ else if(SW('darkland'))_FN='DarkLand-RP-v'+mc;
 else if(SW('wasteland'))_FN='WasteLand-BP-v'+mc;
 else if(SW('glowshot'))_FN='Glow-Shot-v'+mc;
 else _FN=f.split('/')[0]+mc;
-t('fn').value=t('e').checked?_FN.replace('v.mcworld','v'+t('ver').value+'.mcworld'):_FN.replace('v'+mc,'v'+t('ver').value+'.mcpack');
+if(!_FN.includes('.mcworld'))agg=0;
+t('fn').value=agg?_FN.replace('v.mcworld','v'+t('ver').value+'.mcworld'):_FN.replace('v'+mc,'v'+t('ver').value+'.mcpack');
 },obf=(mem=null)=>{
 val=Number(t('v').value);
 if(mem===null)return"";
@@ -63,8 +64,7 @@ default:res[key]=obj[prop];
 return res;
 },regex=/loot_tables|scripts|functions|textures|\.png|\.tga|texts|trades|sounds|spawn_rules/,
 reg3=/"minecraft:block":\s*\{[\s\S]*\}|"particle_effect":\s*\{[\s\S]*\}|"minecraft:feature_rules":\s*\{[\s\S]*\}|"minecraft:geometry":\s*\[[\s\S]*\]|"animations":\s*\{[\s\S]*\}/,
-reg4=/[?*:\\|"<>]+/g,
-Path=p=>uuid?p:p.replace(/\/[^?*:\\|"<>/]+$/i,'/'+crypto.randomUUID().replace('-','').slice(0,12)+'.json');
+reg4=/[?*:\\|"<>]+/g
 _h.forEach(x=>_hs+=x+'\n');
 alert('History:\n'+_hs);
 async function s(){
@@ -74,7 +74,7 @@ if(!f.length){
 alert('Select files.');
 return;}
 use=1;
-uuid=t('e').checked;
+const Path=agg?p=>p:p.replace(/\/[^?*:\\|"<>/]+$/i,'/'+crypto.randomUUID().replace('-','').slice(0,12)+'.json');
 const fn=t('fn').value,zip=new JSZip();
 _h.unshift(fn);localStorage.setItem('h',JSON.stringify(_h));
 for(IT=0;IT<f.length;IT++){
