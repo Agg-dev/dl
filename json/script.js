@@ -64,7 +64,8 @@ default:res[key]=obj[prop];
 return res;
 },regex=/loot_tables|scripts|functions|textures|\.png|\.tga|texts|trades|sounds|spawn_rules/,
 reg3=/"minecraft:block":\s*\{[\s\S]*\}|"particle_effect":\s*\{[\s\S]*\}|"minecraft:feature_rules":\s*\{[\s\S]*\}|"minecraft:geometry":\s*\[[\s\S]*\]|"animations":\s*\{[\s\S]*\}/,
-reg4=/[?*:\\|"<>]+/g
+reg4=/[?*:\\|"<>]+/g,
+OPT={compression:"DEFLATE",compressionOptions:{level:0}};
 _h.forEach(x=>_hs+=x+'\n');
 alert('History:\n'+_hs);
 async function s(){
@@ -83,13 +84,13 @@ let path=fi.webkitRelativePath;
 const sl=path.split('/');
 path=path.slice(sl[0].length+1);
 if(!fi.name.endsWith('.json')){
-zip.file(path,fi,{compression:'DEFLATE',compressionOptions:{level:0}});continue;}
+zip.file(path,fi,OPT);continue;}
 try{
 let txt=await fi.text();
 if(sl.length>2&&!regex.test(path))path=Path(path);
 if(!reg3.test(txt))txt=obf(JSON.parse(txt));
-zip.file(path.replace(reg4,'_'),txt,{compression:'DEFLATE',compressionOptions:{level:0}});
-}catch(e){fs.innerHTML+='<hr><strong>'+path+'</strong>: '+String(e).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');zip.file(path,fi,{compression:'DEFLATE',compressionOptions:{level:0}});}
+zip.file(path.replace(reg4,'_'),txt,OPT);
+}catch(e){fs.innerHTML+='<hr><strong>'+path+'</strong>: '+String(e).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');zip.file(path,fi,OPT);}
 }
 blob=await zip.generateAsync({type:'blob',mimeType:'application/octet-stream',compression:'DEFLATE',compressionOptions:{level:0}});
 link=document.createElement('a');
