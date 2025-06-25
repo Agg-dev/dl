@@ -75,7 +75,7 @@ if(!f.length){
 alert('Select files.');
 return;}
 use=1;
-const Path=agg?p=>p:p.replace(/\/[^?*:\\|"<>/]+$/i,'/'+crypto.randomUUID().replace('-','').slice(0,12)+'.json');
+const Path=agg?p=>p:p=>p.replace(/\/[^?*:\\|"<>/]+$/i,'/'+crypto.randomUUID().replace('-','').slice(0,12)+'.json');
 const fn=t('fn').value,zip=new JSZip();
 _h.unshift(fn);localStorage.setItem('h',JSON.stringify(_h));
 for(IT=0;IT<f.length;IT++){
@@ -104,6 +104,6 @@ use=0;
 function st(){
 if(blob!==0)URL.revokeObjectURL(blob);
 if(link!==0)document.body.removeChild(link);
-use=0;
+use=agg=0;
 }
 window.onerror=e=>alert(e);
