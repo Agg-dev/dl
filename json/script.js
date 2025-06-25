@@ -11,7 +11,7 @@ agg=1;
 }
 else if(SW('torch'))_FN='Torch-v'+mc;
 else if(SW('mobbattle'))_FN='MobBattle-BP-v'+mc;
-else if(SW('grenade'))_FN='GrenadeBP-v'+mc;
+else if(SW('grenade'))_FN='\uFF27\uFF52\uFF45\uFF4E\uFF41\uFF44\uFF45\uFF53-BP-v'+mc;
 else if(SW('instantre')||SW('redstone'))_FN='Redstone-BP-v'+mc;
 else if(SW('darkland'))_FN='DarkLand-RP-v'+mc;
 else if(SW('wasteland'))_FN='WasteLand-BP-v'+mc;
