@@ -31,13 +31,13 @@ if(typeof ty=='object'&&ty!=null)return'obj';
 return typeof ty;
 },shf=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a;
 },obfStr=str=>{
-let res='';
+let res=[];
 for(let i=0;i<str.length;i++){
-if(str[i]=='\\'){res+=str[i++];res+=str[i];continue;}
-if((crypto.getRandomValues(new Uint32Array(1))[0]/4294967295)<val)res+=str[i];
-else res+='\\u'+str.charCodeAt(i).toString(16).padStart(4,'0');
+if(str[i]=='\\'){res.push(str[i++],str[i]);continue;}
+if((crypto.getRandomValues(new Uint32Array(1))[0]/4294967295)<val)res.push(str[i]);
+else res.push('\\u'+str.charCodeAt(i).toString(16).padStart(4,'0'));
 }
-return res;
+return res.join('');
 },obfArr=arr=>{
 let res=[];
 for(const item of arr){
