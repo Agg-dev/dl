@@ -4,7 +4,7 @@ prg=t('n'),fs=t('fs'),
 _h=JSON.parse(localStorage.getItem('h'))||[],
 show=x=>alert(IT),
 onc=f=>{
-var _FN,SW=x=>f.startsWith(x),mc='.mcpack';
+var _FN,SW=x=>f.startsWith(x),mc='.mcpack',ver=t('ver').value;
 if(SW('aggverse')){
 _FN='AggVerse-v.mcworld';
 agg=1;
@@ -18,7 +18,7 @@ else if(SW('wasteland'))_FN='WasteLand-BP-v'+mc;
 else if(SW('glowshot'))_FN='Glow-Shot-v'+mc;
 else _FN=f.split('/')[0]+mc;
 if(!_FN.includes('.mcworld'))agg=0;
-t('fn').value=agg?_FN.replace('v.mcworld','v'+t('ver').value+'.mcworld'):SW('grenade')?_FN.replace('v'+mc,'v'+String.fromCharCode(0xFF10+parseInt(t('ver').value)))+mc:_FN.replace('v'+mc,'v'+t('ver').value+mc);
+t('fn').value=agg?_FN.replace('v.mcworld','v'+t('ver').value+'.mcworld'):SW('grenade')?_FN.replace('v'+mc,'v'+[...ver].map(d=>String.fromCharCode(0xFF10+parseInt(d))).join('')+mc):_FN.replace('v'+mc,'v'+t('ver').value+mc);
 },obf=(mem=null)=>{
 val=Number(t('v').value);
 if(mem===null)return"";
