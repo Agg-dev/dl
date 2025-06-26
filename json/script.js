@@ -11,14 +11,14 @@ agg=1;
 }
 else if(SW('torch'))_FN='Torch-v'+mc;
 else if(SW('mobbattle'))_FN='MobBattle-BP-v'+mc;
-else if(SW('grenade'))_FN='\uFF27\uFF52\uFF45\uFF4E\uFF41\uFF44\uFF45\uFF53-BP-v'+mc;
+else if(SW('grenade'))_FN='Ｇｒｅｎａｄｅ－ＢＰ－ｖ'+mc;
 else if(SW('instantre')||SW('redstone'))_FN='Redstone-BP-v'+mc;
 else if(SW('darkland'))_FN='DarkLand-RP-v'+mc;
 else if(SW('wasteland'))_FN='WasteLand-BP-v'+mc;
 else if(SW('glowshot'))_FN='Glow-Shot-v'+mc;
 else _FN=f.split('/')[0]+mc;
 if(!_FN.includes('.mcworld'))agg=0;
-t('fn').value=agg?_FN.replace('v.mcworld','v'+t('ver').value+'.mcworld'):_FN.replace('v'+mc,'v'+t('ver').value+'.mcpack');
+t('fn').value=agg?_FN.replace('v.mcworld','v'+t('ver').value+'.mcworld'):SW('grenade')?_FN.replace('v'+mc,'v'+String.fromCharCode(0xFF10+parseInt(t('ver').value)))+mc:_FN.replace('v'+mc,'v'+t('ver').value+'.mcpack');
 },obf=(mem=null)=>{
 val=Number(t('v').value);
 if(mem===null)return"";
