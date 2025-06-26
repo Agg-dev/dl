@@ -18,7 +18,7 @@ else if(SW('wasteland'))_FN='WasteLand-BP-v'+mc;
 else if(SW('glowshot'))_FN='Glow-Shot-v'+mc;
 else _FN=f.split('/')[0]+mc;
 if(!_FN.includes('.mcworld'))agg=0;
-t('fn').value=agg?_FN.replace('v.mcworld','v'+t('ver').value+'.mcworld'):SW('grenade')?_FN.replace('v'+mc,'v'+[...ver].map(d=>String.fromCharCode(0xFF10+parseInt(d))).join('')+mc):_FN.replace('v'+mc,'v'+t('ver').value+mc);
+t('fn').value=agg?_FN.replace('v.mcworld','v'+ver+'.mcworld'):SW('grenade')?_FN.replace('v'+mc,'v'+[...ver].map(d=>String.fromCharCode(0xFF10+parseInt(d))).join('')+mc):_FN.replace('v'+mc,'v'+ver+mc);
 },obf=(mem=null)=>{
 val=Number(t('v').value);
 if(mem===null)return"";
