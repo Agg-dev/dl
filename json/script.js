@@ -1,4 +1,4 @@
-let blob=0,link=0,use=0,uuid,val,_hs='',IT=0,agg=0;
+let blob=0,link=0,use=0,uuid,val,IT=0,agg=0;
 const t=e=>document.getElementById(e),
 prg=t('n'),fs=t('fs'),
 _h=JSON.parse(localStorage.getItem('h'))||[],
@@ -68,6 +68,7 @@ reg3=/"minecraft:block":\s*\{[\s\S]*\}|"particle_effect":\s*\{[\s\S]*\}|"minecra
 reg4=/[?*:\\|"<>]+/g,
 OPT={compression:"DEFLATE",compressionOptions:{level:0}},
 shH=()=>{
+var _hs='';
 _h.forEach(x=>_hs+=x+'\n');
 alert('History:\n'+_hs);
 }
