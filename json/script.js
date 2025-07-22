@@ -64,8 +64,7 @@ return res;
 },regex=/loot_tables|scripts|functions|textures|\.png|\.tga|texts|trades|sounds|spawn_rules/,
 reg3=/"minecraft:block":\s*\{[\s\S]*\}|"particle_effect":\s*\{[\s\S]*\}|"minecraft:feature_rules":\s*\{[\s\S]*\}|"minecraft:geometry":\s*\[[\s\S]*\]|"animations":\s*\{[\s\S]*\}/,
 reg4=/[?*:\\|"<>]+/g,
-OPT={compression:"DEFLATE",compressionOptions:{level:0}},
-async function s(){
+OPT={compression:"DEFLATE",compressionOptions:{level:0}},s=async()=>{
 if(use)return;
 const f=t('f').files;
 if(!f.length){
