@@ -1,7 +1,6 @@
 let blob=0,link=0,use=0,uuid,val,IT=0,agg=0;
-const t=e=>document.getElementById(e),
-prg=t('n'),fs=t('fs'),
-show=x=>t('sH').value='Progress: '+IT,
+const t=e=>document.getElementById(e),fs=t('fs'),
+show=x=>t('sH').textContent='Progress: '+IT,
 onc=f=>{
 var _FN,SW=x=>f.startsWith(x),mc='.mcpack';
 if(SW('aggverse')){
