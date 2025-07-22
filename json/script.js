@@ -75,7 +75,6 @@ return;}
 use=1;
 const Path=agg?p=>p:p=>p.replace(/\/[^?*:\\|"<>/]+$/i,'/'+crypto.randomUUID().replace('-','').slice(0,12)+'.json');
 const fn=t('fn').value,zip=new JSZip();
-_h.unshift(fn);localStorage.setItem('h',JSON.stringify(_h));
 for(IT=0;IT<f.length;IT++){
 if(IT%20==0)await new Promise(r=>setTimeout(r,0));
 const fi=f[IT];
