@@ -1,25 +1,24 @@
 let blob=0,link=0,use=0,uuid,val,IT=0,agg=0;
 const t=e=>document.getElementById(e),
 prg=t('n'),fs=t('fs'),
-_h=JSON.parse(localStorage.getItem('h'))||[],
 show=x=>alert(IT),
 onc=f=>{
-var _FN,SW=x=>f.startsWith(x),mc='.mcpack',ver=t('ver').value;
+var _FN,SW=x=>f.startsWith(x),mc='.mcpack';
 if(SW('aggverse')){
-_FN='AggVerse-v.mcworld';
+_FN='AggVerse.mcworld';
 agg=1;
 }
-else if(SW('torch'))_FN='Torch-v'+mc;
-else if(SW('mobbattle'))_FN='MobBattle-BP-v'+mc;
-else if(SW('grenade'))_FN='Ｇｒｅｎａｄｅ－ＢＰ－ｖ'+mc;
-else if(SW('instantre')||SW('redstone'))_FN='Redstone-BP-v'+mc;
-else if(SW('darkland'))_FN='DarkLand-RP-v'+mc;
-else if(SW('wasteland'))_FN='WasteLand-BP-v'+mc;
-else if(SW('glowshot'))_FN='Glow-Shot-v'+mc;
-else if(SW('bettercomb'))_FN='BetterCombat-BP-v'+mc;
+else if(SW('torch'))_FN='Torch'+mc;
+else if(SW('mobbattle'))_FN='MobBattle-BP'+mc;
+else if(SW('grenade'))_FN='Ｇｒｅｎａｄｅ－ＢＰ'+mc;
+else if(SW('redstone'))_FN='Redstone-BP'+mc;
+else if(SW('darkland'))_FN='DarkLand-RP'+mc;
+else if(SW('wasteland'))_FN='WasteLand-BP'+mc;
+else if(SW('glowshot'))_FN='Glow-Shot'+mc;
+else if(SW('bettercomb'))_FN='BetterCombat-BP'+mc;
 else _FN=f.split('/')[0]+mc;
 if(!_FN.includes('.mcworld'))agg=0;
-t('fn').value=agg?_FN.replace('v.mcworld','v'+ver+'.mcworld'):SW('grenade')?_FN.replace(mc,[...ver].map(d=>String.fromCharCode(0xFF10+parseInt(d))).join('')+mc):_FN.replace('v'+mc,'v'+ver+mc);
+t('fn').value=_FN;
 },obf=(mem=null)=>{
 val=Number(t('v').value);
 if(mem===null)return"";
@@ -67,11 +66,6 @@ return res;
 reg3=/"minecraft:block":\s*\{[\s\S]*\}|"particle_effect":\s*\{[\s\S]*\}|"minecraft:feature_rules":\s*\{[\s\S]*\}|"minecraft:geometry":\s*\[[\s\S]*\]|"animations":\s*\{[\s\S]*\}/,
 reg4=/[?*:\\|"<>]+/g,
 OPT={compression:"DEFLATE",compressionOptions:{level:0}},
-shH=()=>{
-var _hs='';
-_h.forEach(x=>_hs+=x+'\n');
-alert('History:\n'+_hs);
-}
 async function s(){
 if(use)return;
 const f=t('f').files;
@@ -111,4 +105,4 @@ if(blob!==0)URL.revokeObjectURL(blob);
 if(link!==0)document.body.removeChild(link);
 use=agg=0;
 }
-window.onerror=e=>alert(e);
+window.onerror=alert;
