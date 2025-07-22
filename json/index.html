@@ -12,11 +12,10 @@
 <h1>Input</h1>
 <input type="file" id="f" webkitdirectory onchange="onc(this.files[0].webkitRelativePath.toLowerCase())"><br>
 <button onclick="s()">Start</button>
-<button onclick="show()">Show progress</button>
-<button onclick="shH()">Show history</button>
-<button ondblclick="st()">Stop/Done</button>
+<button onclick="show()" id="sH">Show progress</button>
+<button onclick="st()">Stop/Done</button>
 <h2>Chance to unicode encode</h2>
-<input type="number"id="v"value="0.6">
+<input type="number"id="v"value="0.8">
 <h2>File Name</h2>
 <input type="text" id="fn" value="V.mcpack">
 <details open><summary>Errors
