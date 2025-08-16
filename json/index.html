@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="dark only">
 <title>Json folder</title>
 <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
@@ -14,12 +14,12 @@
 <button onclick="s()">Start</button>
 <button onclick="show()" id="sH">Show progress</button>
 <button onclick="st()">Stop/Done</button>
+<pre id="p">0</pre>
 <h2>Chance to unicode encode</h2>
-<input type="number"id="v"value="0.8">
+<input type="range"id="v"value="0.8"min="0"max="1"step="0.0000000000001"oninput="t('p'). textContent=this.value;">
 <h2>File Name</h2>
-<input type="text" id="fn" value="V.mcpack">
-<details open><summary>Errors
-</summary><fieldset id="fs">
-</fieldset></details><script src="script.js" type="text/javascript" charset="utf-8"></script>
+<input type="text" id="fn">
+<fieldset id="fs"></fieldset>
+<script src="script.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>
