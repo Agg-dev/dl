@@ -1,7 +1,8 @@
 "use strict";
-var blob,link,use=0,val,IT=0,agg=0,F;
+var blob,link=document.createElement('a'),use=0,val,agg=0,F;
+link.textContent='Download';
 const t=e=>document.getElementById(e),fs=t('fs'),
-show=()=>t('sH').textContent=IT+' or '+((IT/F.length)*100).toFixed(4),
+ER=x=>fs.innerHTML+=x,
 onc=f=>{
 var _FN,SW=x=>f.startsWith(x),mc='.mcpack';
 if(SW('aggverse'))_FN='AggVerse.mcworld',agg=1;
@@ -54,34 +55,45 @@ return res;
 Reg=/"minecraft:block":\s*\{[\s\S]*\}|"particle_effect":\s*\{[\s\S]*\}|"minecraft:feature_rules":\s*\{[\s\S]*\}|"minecraft:geometry":\s*\[[\s\S]*\]|"animations":\s*\{[\s\S]*\}/,
 reG=/[?*:\\|"<>]+/g,
 ReG=/\/[^?*:\\|"<>/]+$/,
-s=async()=>{
+utf='abcdefghijklmnopqrstuvwxyz0123456789',
+H=len=>{
+if(typeof len!=='number')throw new Error("Argument 'len' to function H isn't a number. Got "+len);
+const arr=[],bulk=crypto.getRandomValues(new Uint16Array(Math.round(len*10.5)));
+var sub=[],b=0,l=Math.floor(crypto.getRandomValues(new Uint16Array(1))[0]/65535*5)+8;
+for(var i=0;i<len;i++){
+for(var j=0;j<l;j++){
+sub.push(utf[Math.floor(bulk[b++]/65535*37)]);
+if(b>=bulk.length)b=0,crypto.getRandomValues(bulk);
+}
+arr.push(sub.join(''));
+sub=[];l=Math.floor(crypto.getRandomValues(new Uint16Array(1))[0]/65535*5)+8;
+}
+return arr;
+},s=async()=>{
 if(use)return;
 F=t('f').files;
 if(!F.length)return;
 use=1;
 val=+t('v').value;
-const $=Date.now(),fn=t('fn').value,zip=new JSZip();
-await Promise.all(Array.from(F).map(async(fi,i)=>{
-IT=i+1;
+const $=Date.now(),fn=t('fn').value,zip=new JSZip(),fl=Array.from(F),JS=fl.filter(fi=>fi.name.endsWith('.json')),nJs=fl.filter(x=>!x.name.endsWith('.json'));
+await Promise.all(nJs.map(async fi=>{let $P=fi.webkitRelativePath;try{const $p=$P;$P=$P.replace(reG,'_');if($p!==$P)ER('<hr><strong style="color:#F90;"> •'+$P+'</strong>: Sanitized '+$p);zip.file($P.substring($P.indexOf('/')+1),fi);}catch(e){ER('<hr><strong style="color:red;"> •'+($P||fi.name)+'</strong>: '+String(e).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'));zip.file($P||fi.name,fi);return;}}));
+const J=agg?null:H(JS.length);
+await Promise.all(JS.map(async(fi,i)=>{
 let path=fi.webkitRelativePath;
 const sl=path.split('/');
 path=path.slice(sl[0].length+1);
-if(!path.endsWith('.json')){
-zip.file(path,fi);return;}
 try{
 let txt=await fi.text();
 if(!Reg.test(txt))txt=obf(JSON.parse(txt));
-if(sl.length>2&&!reg.test(path)&&!agg)path=path.replace(ReG,'/'+crypto.randomUUID().replace('-','').slice(0,12)+'.json');
+if(sl.length>2&&!reg.test(path)&&!agg)path=path.replace(ReG,'/'+J[i]+'f.json');
 const P=path;
 path=path.replace(reG,'_');
-if(P!==path)fs.innerHTML+='<hr><strong style="color:#F90;"> •'+path+'</strong>: Sanitized '+P;
+if(P!==path)ER('<hr><strong style="color:#F90;"> •'+path+'</strong>: Sanitized '+P);
 zip.file(path,txt);
-}catch(e){fs.innerHTML+='<hr><strong style="color:red;"> •'+path+'</strong>: '+String(e).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');zip.file(path,fi);return;}
+}catch(e){ER('<hr><strong style="color:red;"> •'+path+'</strong>: '+String(e).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'));zip.file(path,fi);return;}
 }));
 blob=await zip.generateAsync({type:'blob',mimeType:'application/octet-stream',compression:'STORE'});
-link=document.createElement('a');
 link.download=fn;
-link.textContent='Download';
 link.href=URL.createObjectURL(blob);
 document.body.appendChild(link);
 link.click();
@@ -93,4 +105,4 @@ document.body.removeChild(link);
 use=agg=0;
 }catch(e){}
 }
-window.onerror=E=>fs.innerHTML+='<hr><span style="color:#0EE;"> •'+String(E).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;')+'</span>';
+window.onerror=E=>ER('<hr><span style="color:#0EE;"> •'+String(E).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;')+'</span>');
